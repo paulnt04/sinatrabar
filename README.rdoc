@@ -22,5 +22,6 @@ Sinatrabar by default will run on Port 4567
 == License
 
 Sinatrabar is released under the MIT license.
-It includes handlebars.js (github.com/wycats/handlebars.js)
-and sinatra-template, both released under MIT
+It includes handlebars.js (github.com/wycats/handlebars.js),
+sinatra-template (github.com/zapnap/sinatra-template),
+and jQuery UI, all released under MIT (see MIT-LICENSE)
