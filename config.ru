@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), 'application')
+require File.join(File.dirname(__FILE__), 'sinatrabar')
 
 set :run, false
 set :environment, :production

@@ -1,0 +1,51 @@
+# Cove Capistrano Deploy
+require 'erb'
+
+# This is an example deploy.rb
+# Please change domain, deploy_to path, user, db_user, db_password, secrets, and tokens if needed
+
+set :application, "sinatrabar"
+set :domain,      "domain.example.com"
+set :repository,  "git://github.com/paulnt04/sinatrabar.git"
+set :use_sudo, false
+set :deploy_to,   "/path/to/#{application}"
+set :user, "deploy_user"
+set :scm, :git
+set :branch, "release"
+set :deploy_via, :remote_cache
+
+role :app, domain
+role :web, domain
+role :db,  domain, :primary => true
+
+after "deploy:update_code" "db:symlink", "bundle:install", "db:migrate"
+
+namespace :deploy do
+  task :start, :roles => :app do
+    run "touch #{File.join(current_release,'tmp','restart.txt')}"
+  end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_release,'tmp','restart.txt')}"
+    #run "#{try_sudo} rm -r #{File.join(current_release, 'tmp', 'cache', '*')}"
+  end
+end
+
+namespace :bundle do
+  desc "Runs `bundle install` on current release"
+  task :install do
+    run "cd #{current_release} && #{try_sudo} bundle install"
+  end
+end
+
+namespace :db do
+  desc "Makes symlink for database yaml" 
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
+  end
+  
+  desc "Migrates to your newest database structure"
+  task :migrate do
+    run "cd #{current_release} && RAILS_ENV=production rake db:migrate"
+  end
+end

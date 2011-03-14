@@ -1,0 +1,13 @@
+==== TO DO ====
+- Use sqlite3 to story song_info, history, and user_info
+-- Implement migration without ActiveRecord from schema.rb and database.yml
+-- Stop using #{APP ROOT}/tmp/song_details.txt
+-- Implement in eventer
+-- Implement rake tasts (db:migrate)
+- Set up UI with handlebars.js
+-- Login Screen if pianobar is not running
+-- Logout task
+-- Stations list
+-- Now Playing view with controls for API
+- Make legacy UI without javascript (Using views/legacy)
+-- Make API controls legacy-compatible again
