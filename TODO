@@ -11,3 +11,4 @@
 -- Now Playing view with controls for API
 - Make legacy UI without javascript (Using views/legacy)
 -- Make API controls legacy-compatible again
+- Make full-browser UI

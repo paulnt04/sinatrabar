@@ -1,8 +1,11 @@
-= SinatraBar
+= SinatraBar v0.1
 
 Sinatrabar is a Sinatra App intended as a remote control for pianobar.
 Pianobar is a command-line Pandora Radio (www.pandora.com) client
 available at http://github.com/PromyLOPh/pianobar.git
+
+  Sinatrabar is currently under active development and is not a finished product
+  It has no UI at the moment and should not be used until at least VERSION 0.9.rc
 
 = Requirements
 
