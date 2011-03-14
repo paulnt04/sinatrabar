@@ -14,6 +14,7 @@ Sinatra >= 1.1
 = Use
 
   bundle install
+  rake sinatrabar:install
   ruby sinatrabar.rb
 
 Sinatrabar by default will run on Port 4567

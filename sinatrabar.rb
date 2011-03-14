@@ -102,7 +102,7 @@ end
 
 get '/api/current' do
   @song_info = song_info
-  return @song_info.to_json
+  @song_info.to_json
 end
 
 get '/api/stations' do
