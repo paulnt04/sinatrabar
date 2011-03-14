@@ -2,7 +2,7 @@
   <h1>Station List</h1>
   <ul>
     <% @stations.each do |number,station| %>
-      <li><%= number.to_s + ": " + station %></li>
+      <li><a href="/api/station/<%= number %>"><%= number.to_s + ": " + station %></a></li>
     <% end %>
   </ul>
 </div>

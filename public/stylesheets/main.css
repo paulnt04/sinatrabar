@@ -50,3 +50,7 @@ a:hover {
 #logo a:hover {
   text-decoration: none;
 }
+div a {
+  float: left;
+  margin-right: 5px;
+}

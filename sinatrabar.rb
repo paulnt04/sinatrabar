@@ -100,20 +100,20 @@ get '/' do
   erb :index
 end
 
-get '/api/current' do
+post '/api/current' do
   @song_info = song_info
   @song_info.to_json
 end
 
-get '/api/stations' do
+post '/api/stations' do
   @stations = stations_list
   @stations.to_json
 end
 
-get '/api/station/:id' do
+post '/api/station/:id' do
   switch_station(params[:id])
 end
 
-get '/api/controls/:command' do
+post '/api/controls/:command' do
   song_control(params[:command])
 end

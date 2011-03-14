@@ -6,4 +6,18 @@
     <li>Album: <%= @song_info['album'] %></li>
     <li>Station: <%= @song_info['stationName'] %></li>
   </ul>
+  <a href="#thumbsdown" class="control_link" id="hate_song">Thumbs Down</a>
+  <a href="#bookmarkartist" class="control_link" id="bookmark_artist">Bookmark Artist</a>
+  <a href="#bookmarksong" id="bookmark_song">Bookmark Song</a>
+  <a href="#thumbsup" class="control_link" id="love_song">Thumbs Up</a>
+  <a href="#playpause" class="control_link" id="play_pause">Play/Pause</a>
+  <a href="#nextsong" class="control_link" id="next_song">Next</a>
 </div>
+
+<script>
+  jQuery(document).ready( function() {
+    $('.control_link').click(function() {
+      $.post('/api/controls/' +$(this).attr('id'));
+    });
+  });
+</script>
