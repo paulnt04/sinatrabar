@@ -1,10 +1,24 @@
-===== SinatraBar =====
+= SinatraBar
 
 Sinatrabar is a Sinatra App intended as a remote control for pianobar.
 Pianobar is a command-line Pandora Radio (www.pandora.com) client
 available at http://github.com/PromyLOPh/pianobar.git
 
-===== License =====
+= Requirements
+
+Ruby >= 1.9 (may work on 1.8.x. Future compatibility is not guaranteed)
+rubygems
+bundler
+Sinatra >= 1.1
+
+= Use
+
+  bundle install
+  ruby sinatrabar.rb
+
+Sinatrabar by default will run on Port 4567
+
+== License
 
 Sinatrabar is released under the MIT license.
 It includes handlebars.js (github.com/wycats/handlebars.js)
