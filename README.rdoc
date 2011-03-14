@@ -6,10 +6,13 @@ available at http://github.com/PromyLOPh/pianobar.git
 
 = Requirements
 
-Ruby >= 1.9 (may work on 1.8.x. Future compatibility is not guaranteed)
-rubygems
-bundler
-Sinatra >= 1.1
+  Ruby >= 1.9 (may work on 1.8.x. Future compatibility is not guaranteed)
+  rubygems
+  bundler
+  rake
+  Sinatra >= 1.1
+Optional:
+  capistrano
 
 = Use
 
