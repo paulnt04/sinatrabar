@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
 require 'erb'
+require 'json'
 require File.join(File.dirname(__FILE__), 'environment')
 
 configure do
@@ -45,21 +46,46 @@ helpers do
     return info
   end
 
+  def switch_station id
+    %x[echo 's#{id}' > ~/.config/pianobar/ctl]
+    return "Station has been changed"
+  end
+
   def song_control control
     case control
       when /next/
         # Next Controls
-      when /pause/
+        char = "n"
+        value = "Next Song"
+      when /(play|pause)/
         # Pause Controls
+        char = "p"
+        value = "Play/pause"
       when /bookmark/
         # Song/Artist Bookmark
+        if control =~ /song/
+          char = "bs"
+          value = "Song has been bookmarked"
+        elsif control =~ /artist/
+          char = "ba"
+          value = "Artist has been bookmarked"
+        else
+          value = "Bookmark not understood"
+        end
       when /love/
         # Love song
+        char = "+"
+        value = "Song has been loved"
       when /hate/
         # Hate song
+        char = "-"
+        value = "Song has been banned"
       else
-        # Do Nothing
+        # Failure
+        value = "Unrecognized Command"
     end
+    %x[echo -n '#{char}' > ~/.config/pianobar/ctl ]
+    return value
   end
 
 end
@@ -72,12 +98,26 @@ end
 
 get '/api/current' do
   @song_info = song_info
-  erb :song_details
+  case request.format
+    when /html/
+      erb :song_details
+    when /js/
+      @song_info.to_json
+  end
 end
 
 get '/api/stations' do
   @stations = stations_list
-  erb :stations
+  case request.format
+    when /html/
+      erb :stations
+    when /js/
+      @stations.to_json
+  end
+end
+
+get '/api/station/:id' do
+  switch_station(id)
 end
 
 get '/api/controls/:command' do

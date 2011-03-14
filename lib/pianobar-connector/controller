@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-# Pianobar Controller for OmegaDesk
-## Allows OmegaDesk Remote to control Pianobar
-## Exports into [$HOME]/.config/pianobar/ctl
