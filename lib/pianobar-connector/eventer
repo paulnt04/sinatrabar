@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+# Pianobar Connector for OmegaDesk
+## This script allows OmegaDesk to receive UI updates from pianobar
+# Reference gist.github.com/782165
+#
+event = ARGV[0]
+variables = {}
+File.new('/dev/stdin').readlines.each do |var|
+  split = var.split('=')
+  variable = {split[0]=>split[1]}.to_hash
+  variables.merge! variable
+end
+outvar = File.new("#{File.dirname(__FILE__)}/../../tmp/song_details.txt", 'w')
+outvar.write("#{variables}\n")
+outvar.close
